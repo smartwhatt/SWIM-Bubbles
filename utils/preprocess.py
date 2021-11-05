@@ -50,6 +50,12 @@ def import_movie_data(linesfile, convfile):
             answer.append(diag[conv[i+1]])
     return (question, answer)
 
+def import_from_to_data(fromfile, tofile):
+    with open(fromfile, 'r', encoding='utf-8') as f:
+        lines = f.read().split('\n')
+    with open(tofile, 'r', encoding='utf-8') as f:
+        lines2 = f.read().split('\n')
+    return (lines, lines2)
 
 def add_token(pairs, pairsnum=-1):
     input_docs = []

@@ -2,7 +2,8 @@ from utils.preprocess import *
 from utils.model import create_model
 
 # import and clean data
-question, answer = import_movie_data("./data/movie_lines.txt", "./data/movie_conversations.txt")
+# question, answer = import_movie_data("./data/movie_lines.txt", "./data/movie_conversations.txt")
+question, answer = import_from_to_data("./data/from.txt", "./data/to.txt")
 
 question = [clean_text(ques) for ques in question]
 answer = [clean_text(ans) for ans in answer]
@@ -10,7 +11,7 @@ answer = [clean_text(ans) for ans in answer]
 pairs = list(zip(question, answer))
 
 # tokenize
-docs, tokens, num_token = add_token(pairs, pairsnum=1000)
+docs, tokens, num_token = add_token(pairs, pairsnum=len(pairs))
 input_docs, target_docs = docs
 input_tokens, target_tokens = tokens
 num_encoder_tokens, num_decoder_tokens = num_token
