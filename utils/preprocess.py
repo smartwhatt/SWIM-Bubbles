@@ -50,6 +50,19 @@ def import_movie_data(linesfile, convfile):
             answer.append(diag[conv[i+1]])
     return (question, answer)
 
+def import_from_to_cleaned(fromfile, tofile):
+    with open(fromfile, 'r', encoding='utf-8') as f:
+        lines = f.read().split('\n')
+    with open(tofile, 'r', encoding='utf-8') as f:
+        lines2 = f.read().split('\n')
+    lines = [re.sub(r"\[\w+\]",'hi',line) for line in lines]
+    lines = [" ".join(re.findall(r"\w+",line)) for line in lines]
+    lines2 = [re.sub(r"\[\w+\]",'',line) for line in lines2]
+    lines2 = [" ".join(re.findall(r"\w+",line)) for line in lines2]
+    # grouping lines by response pair
+    pairs = list(zip(lines,lines2))
+    return pairs
+
 def import_from_to_data(fromfile, tofile):
     with open(fromfile, 'r', encoding='utf-8') as f:
         lines = f.read().split('\n')
