@@ -17,8 +17,8 @@ def clean_text(txt):
     txt = re.sub(r"won't", "will not", txt)
     txt = re.sub(r"can't", "can not", txt)
     txt = re.sub(r"[^\w\s]", "", txt)
-    txt = re.sub(r"\[\w+\]", 'hi', txt)
-    txt = " ".join(re.findall(r"\w+", txt))
+    # txt = re.sub(r"\[\w+\]", 'hi', txt)
+    # txt = " ".join(re.findall(r"\w+", txt))
     return txt
 
 
